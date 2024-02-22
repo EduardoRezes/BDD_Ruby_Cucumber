@@ -15,7 +15,7 @@ Cenario: Iniciar a compra de um café
     Dado que estou na pagina principal da Starbugs
         E que desejo comprar o seguinte produto:
         
-        |   product     |   Expresso Gelado     |
+        |   name        |   Expresso Gelado     |
         |   price       |   R$ 9,99             |
         |   delivery    |   R$ 10,00            |
     Quando inico a compra desse item

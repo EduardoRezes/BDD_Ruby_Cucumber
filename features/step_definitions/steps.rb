@@ -16,27 +16,29 @@ end
 Dado('que desejo comprar o seguinte produto:') do |table|
     # table is a Cucumber::MultilineArgument::DataTable
     #puts é o comando para imprimir no console
-    @product_name = table.rows_hash[:product] 
-    @product_price = table.rows_hash[:price]
-    @delivery_price = table.rows_hash[:delivery]
+    #@product_name = table.rows_hash[:product] 
+    #@product_price = table.rows_hash[:price]
+    #@delivery_price = table.rows_hash[:delivery]
+
+    @product = table.rows_hash
 
     #puts table.rows_hash
 end
   
 Quando('inico a compra desse item') do
-    product = find('.coffee-item', text: @product_name)
+    product = find('.coffee-item', text: @product[:name])
     product.find('.buy-coffee').click
 end
   
 Então('devo ver a pagina de checkout com os detalhes do produto') do
     product_titel = find('.item-details h1')
-    expect(product_titel.text).to eql @product_name
+    expect(product_titel.text).to eql @product[:name]
 
     product_price = find('.subtotal .sub-price')
-    expect(product_price.text).to eql @product_price
+    expect(product_price.text).to eql @product[:price]
 
     delivery = find('.delivery-price')
-    expect(delivery.text).to eql @delivery_price
+    expect(delivery.text).to eql @product[:delivery]
 end
 
 Então('o total da compra deve ser de {string}') do |total_price|
