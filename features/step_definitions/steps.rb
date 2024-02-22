@@ -12,18 +12,12 @@ end
 Dado('que estou na pagina principal da Starbugs') do
     visit 'https://starbugs.vercel.app'
 end
-  
-Dado('que desejo comprar o café {string}') do |product_name|
-    #Definindo uma variavel de instancia com @, para acesso a outros steps
-    @product_name = product_name
-end
-  
-Dado('que esse produto custa {string}') do |product_price|
-    @product_price = product_price
-end
-  
-Dado('que o custo de entrega é de {string}') do |delivery_price|
-    @delivery_price = delivery_price
+
+Dado('que desejo comprar o seguinte produto:') do |table|
+    # table is a Cucumber::MultilineArgument::DataTable
+    @product_name = table.hashes[0][:product] #puts é o comando para imprimir no console
+    @product_price = table.hashes[0][:price]
+    @delivery_price = table.hashes[0][:delivery]
 end
   
 Quando('inico a compra desse item') do
