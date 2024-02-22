@@ -15,9 +15,12 @@ end
 
 Dado('que desejo comprar o seguinte produto:') do |table|
     # table is a Cucumber::MultilineArgument::DataTable
-    @product_name = table.hashes[0][:product] #puts é o comando para imprimir no console
-    @product_price = table.hashes[0][:price]
-    @delivery_price = table.hashes[0][:delivery]
+    #puts é o comando para imprimir no console
+    @product_name = table.rows_hash[:product] 
+    @product_price = table.rows_hash[:price]
+    @delivery_price = table.rows_hash[:delivery]
+
+    #puts table.rows_hash
 end
   
 Quando('inico a compra desse item') do

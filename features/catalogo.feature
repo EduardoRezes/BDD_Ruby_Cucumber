@@ -14,8 +14,10 @@ Cenario: Iniciar a compra de um café
     #Dado é uma pré condição
     Dado que estou na pagina principal da Starbugs
         E que desejo comprar o seguinte produto:
-        |     product         |     price   |     delivery |
-        |     Expresso Gelado |     R$ 9,99 |     R$ 10,00 |
+        
+        |   product     |   Expresso Gelado     |
+        |   price       |   R$ 9,99             |
+        |   delivery    |   R$ 10,00            |
     Quando inico a compra desse item
     Então devo ver a pagina de checkout com os detalhes do produto
         E o total da compra deve ser de "R$ 19,99"
